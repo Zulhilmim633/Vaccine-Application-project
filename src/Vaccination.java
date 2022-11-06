@@ -33,7 +33,7 @@ public class Vaccination extends JFrame implements ActionListener{
 		cont = getContentPane();
         cont.setLayout(null);
         
-        btn1stdose = new JButton("1st dose");
+        btn1stdose = new JButton("1st Dose");
         btn1stdose.setBounds(32, 88, 85, 21);
 		btn1stdose.addActionListener(this);
 		cont.add(btn1stdose);
@@ -52,6 +52,12 @@ public class Vaccination extends JFrame implements ActionListener{
 		btnBack.setBounds(32, 136, 85, 21);
 		btnBack.addActionListener(this);
 		cont.add(btnBack);
+		
+		JLabel lblNewLabel = new JLabel("Continue with  :");
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setBounds(32, 46, 319, 13);
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 13));
+		cont.add(lblNewLabel);
 
 		
 
