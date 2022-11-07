@@ -84,13 +84,8 @@ public class Vaccine extends JFrame implements ActionListener{
 		list31_49.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				// System.out.println(seCenter2);
-				// if(list31_49.getSelectedValue().equalsIgnoreCase(seCenter2)){
-				// 	list31_49.clearSelection();
-				// }
 				list18_30.clearSelection();
 				list50above.clearSelection();
-				// seCenter2 = list31_49.getSelectedValue();
         	}
 		});
 		list31_49.setVisibleRowCount(5);
@@ -113,13 +108,8 @@ public class Vaccine extends JFrame implements ActionListener{
 		list50above.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				// System.out.println(seCenter3);
-				// if(list50above.getSelectedValue().equalsIgnoreCase(seCenter3)){
-				// 	list50above.clearSelection();
-				// }
 				list18_30.clearSelection();
 				list31_49.clearSelection();
-				// seCenter3 = list50above.getSelectedValue();
         	}
 		});
 		list50above.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);

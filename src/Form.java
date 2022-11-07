@@ -15,22 +15,6 @@ public class Form extends JFrame implements ActionListener{
     private Citizen person;
 
 	/**
-	 * Launch the application.
-	 */
-	// public static void main(String[] args) {
-	// 	EventQueue.invokeLater(new Runnable() {
-	// 		public void run() {
-	// 			try {
-	// 				Form frame = new Form();
-	// 				frame.setVisible(true);
-	// 			} catch (Exception e) {
-	// 				e.printStackTrace();
-	// 			}
-	// 		}
-	// 	});
-	// }
-
-	/**
 	 * Create the frame.
 	 */
 	public Form(String option, LinkedList<Citizen> citizen, Citizen person) {

@@ -50,7 +50,6 @@ public class Complete extends JFrame implements ActionListener{
 			}
 		});
 		list.setBounds(26, 41, 132, 58);
-		// cont.add(new JScrollPane(list));
 		
 		JLabel lblNewLabel = new JLabel("Complete vaccination");
 		lblNewLabel.setBounds(28, 18, 148, 13);
