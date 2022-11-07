@@ -166,6 +166,10 @@ public class Form extends JFrame implements ActionListener{
                 JOptionPane.showMessageDialog(null, "Please dont leave input field empty", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
+            if(Integer.parseInt(txtAge.getText()) < 18){
+                JOptionPane.showMessageDialog(null, "Age is not match", "Age", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
 
 			if(option.equalsIgnoreCase("ADD")){
                 String dose1 = txt1stdose.getText().equalsIgnoreCase("") ? null : txt1stdose.getText();

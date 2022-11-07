@@ -19,7 +19,6 @@ public class Vaccination extends JFrame implements ActionListener{
 	public Vaccination(Stack<Citizen> stCenter1, Stack<Citizen> stCenter2, Stack<Citizen> stCenter3, Queue<Citizen> qCenter1, Queue<Citizen> qCenter2, Queue<Citizen> qCenter3, LinkedList<Citizen> completedList) {
 		super("Vaccination");
 
-		// this.setStack(CitizenList);
 		this.completedList = completedList;
 
 		this.stCenter1 = stCenter1;
@@ -59,37 +58,24 @@ public class Vaccination extends JFrame implements ActionListener{
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 13));
 		cont.add(lblNewLabel);
 
-		
-
-
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 405, 222);
 		setLocationRelativeTo(null);
 	}
 
-	// 
 	public void actionPerformed(ActionEvent e){
 		if(e.getSource() == btn1stdose){
-			// int size = stCenter1.size();
-			// LinkedList<String> name = new LinkedList<>();
-			// for (int i = 0; i < size; i++) {
-			// 	name.add(stCenter1.pop().getName());
-			// }
-			System.out.println(stCenter1.size()+" "+stCenter2.size()+' '+stCenter3.size()+' '+qCenter1.size()+' '+qCenter2.size()+' '+qCenter3.size()+' '+completedList.size());
-
 			Vaccine frame = new Vaccine(stCenter1, stCenter2, stCenter3,qCenter1, qCenter2, qCenter3, completedList, "1stdose");
 			frame.setVisible(true);
 			dispose();
 		}
 		else if(e.getSource() == btn2nddose){
-			System.out.println(stCenter1.size()+" "+stCenter2.size()+' '+stCenter3.size()+' '+qCenter1.size()+' '+qCenter2.size()+' '+qCenter3.size()+' '+completedList.size());
 			Vaccine frame = new Vaccine(stCenter1, stCenter2, stCenter3,qCenter1, qCenter2, qCenter3, completedList, "2nddose");
 			frame.setVisible(true);
 			dispose();
 		}
 
 		else if(e.getSource() == btnComplete){
-			System.out.println(completedList.size());
 			Complete frame = new Complete(stCenter1, stCenter2, stCenter3,qCenter1, qCenter2, qCenter3, completedList);
 			frame.setVisible(true);
 			dispose();

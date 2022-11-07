@@ -156,11 +156,13 @@ public class Vaccine extends JFrame implements ActionListener{
 			JList[] lJLists = {list18_30, list31_49, list50above};
 			for (JList<String> jList : lJLists) {
 				String name = jList.getSelectedValue();
-				if(name != null)
+				if(name != null){
 					sendBack(name);
+					return;
+				}
 				jList.clearSelection();
 			}
-			// System.out.println(seCenter1+' '+seCenter2+' '+seCenter3);
+			JOptionPane.showMessageDialog(null, "Please select one","Not Selected",JOptionPane.ERROR_MESSAGE);
 		}
 
 		if(e.getSource() == btnBack){
@@ -216,7 +218,6 @@ public class Vaccine extends JFrame implements ActionListener{
 		int size3 = option.equalsIgnoreCase("1stdose") ? stTemp3.size() : qTemp3.size();
 		for (int i = 0; i < size3; i++) {
 			Citizen person = option.equalsIgnoreCase("1stdose") ? stTemp3.pop() : qTemp3.remove();
-			// if(!person.getName().equalsIgnoreCase(name)){
 			if(option.equalsIgnoreCase("1stdose")){
 				if(person.getName().equalsIgnoreCase(name)){
 						person.setStat1stDose("Done");
