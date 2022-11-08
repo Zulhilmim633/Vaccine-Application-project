@@ -171,6 +171,11 @@ public class Form extends JFrame implements ActionListener{
             else if(option.equalsIgnoreCase("UPDATE")){
                 for (int i = 0; i < CitizenList.size(); i++) {
                     if(CitizenList.get(i).getIc() == person.getIc()){
+                        String dose1 = txt1stdose.getText().equalsIgnoreCase("") ? null : txt1stdose.getText();
+                        String dose2 = txt2nddose.getText().equalsIgnoreCase("") ? null : txt2nddose.getText();
+                        String Certificicate = txtCertificate.getText().equalsIgnoreCase("") ? null : txtCertificate.getText();
+
+                        person = new Citizen(txtName.getText(), txtIc.getText(), txtState.getText(), Integer.parseInt(txtAge.getText()), txtCategory.getText(), dose1, dose2, Certificicate);
                         CitizenList.set(i, person);
                     }
                 }
