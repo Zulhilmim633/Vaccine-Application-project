@@ -20,11 +20,14 @@ public class TestCitizen extends JFrame implements ActionListener{
 	public static void main(String[] args) throws IOException {
 		LinkedList<Citizen> citizenlist = new LinkedList<>();
 		try {
+			//Read file
             BufferedReader br = new BufferedReader(new FileReader("Citizen.txt"));
             Citizen citizen;
 
             String line = br.readLine();
+			//Loop until line == null
             while (line != null) {
+				//Using StringTokenizer with ";" delimeter
                 StringTokenizer st = new StringTokenizer(line, ";");
                 String name = st.hasMoreTokens() ? st.nextToken() : null;
                 String ic = st.hasMoreTokens() ? st.nextToken() : null;
@@ -41,7 +44,10 @@ public class TestCitizen extends JFrame implements ActionListener{
                 line = br.readLine();
             }
 
+			//Close file
             br.close();
+
+		//Catch some erorr and print to user
         } catch (EOFException ex) {
 			System.out.println("End of file error");
 		} catch (FileNotFoundException ex) {
@@ -52,6 +58,7 @@ public class TestCitizen extends JFrame implements ActionListener{
 			System.out.println("ERROR: " + e.getMessage());
 		}
 
+		//Create new TestCitizen object
 		TestCitizen frame = new TestCitizen(citizenlist);
 		frame.setVisible(true);
 	}
@@ -100,12 +107,14 @@ public class TestCitizen extends JFrame implements ActionListener{
 	}
 
 	public void actionPerformed(ActionEvent e) {
+		//Button add function
 		if(e.getSource() == btnAdd){
 			Form frame = new Form("ADD", CitizenList, new Citizen());
 			frame.setVisible(true);
 			dispose();
 			return;
 		}
+		//Button Continue function
 		else if(e.getSource() == btnContinue){
 			Stack<Citizen> stCenter1, stCenter2, stCenter3;
 			Queue<Citizen> qCenter1, qCenter2, qCenter3;
@@ -118,83 +127,146 @@ public class TestCitizen extends JFrame implements ActionListener{
 			qCenter2 = new LinkedList<>();
 			qCenter3 = new LinkedList<>();
 
-			System.out.println(CitizenList.getLast());
 			LinkedList<Citizen> completedList =  new LinkedList<>();
 			
 			int size = CitizenList.size();
 			for (int i = 0; i < size; i++) {
 				Citizen person = CitizenList.removeLast();
+				//If person age is greater or equal 18 and below or equal 30 
 				if(person.getAge() >= 18 & person.getAge() <= 30){
+
+					//If person 2nd dose is complete
 					if(person.getStat2ndDose() != null){
+
+						//Add to complete list
 						completedList.add(person);
+
+						//Continue with next person
 						continue;
 					}
+					//If person 1st dose is complete
 					else if(person.getStat1stDose() != null){
+
+						//Add to desire queue center
 						qCenter1.add(person);
+
+						//Continue with next person
 						continue;
 					}
+					//If person does not inject yet
 					else{
+
+						//Add to desire Stack center
 						stCenter1.add(person);
+
+						//Continue with next person
 						continue;
 					}
 				}
+				//If person age is greater or equal 31 and below or equal 49
 				else if(person.getAge() >= 31 & person.getAge() <=49){
+
+					//If person 2nd dose is complete
 					if(person.getStat2ndDose() != null){
+
+						//Add to complete list
 						completedList.add(person);
+
+						//Continue with next person
 						continue;
 					}
+					//If person 1st dose is complete
 					else if(person.getStat1stDose() != null){
+
+						//Add to desire queue center
 						qCenter2.add(person);
+
+						//Continue with next person
 						continue;
 					}
+					//If person does not inject yet
 					else{
+
+						//Add to desire Stack center
 						stCenter2.add(person);
+
+						//Continue with next person
 						continue;
 					}
 				}
+				//If person age is more or equal 50
 				else if(person.getAge() >= 50){
+
+					//If person 2nd dose is complete
 					if(person.getStat2ndDose() != null){
+
+						//Add to complete list
 						completedList.add(person);
+
+						//Continue with next person
 						continue;
 					}
+					//If person 1st dose is complete
 					else if(person.getStat1stDose() != null){
+
+						//Add to desire queue center
 						qCenter3.add(person);
+
+						//Continue with next person
 						continue;
 					}
+					//If person does not inject yet
 					else{
+
+						//Add to desire Stack center
 						stCenter3.add(person);
+
+						//Continue with next person
 						continue;
 					}
 				}
 			}
 
+			//Continue with next frame
 			Vaccination frame = new Vaccination(stCenter1, stCenter2, stCenter3,qCenter1, qCenter2, qCenter3,completedList);
 			frame.setVisible(true);
 			dispose();
 			return;
 		}
 
+		//Ask user to input the IC 
 		String ic = JOptionPane.showInputDialog(null, "Insert IC", "IC", JOptionPane.QUESTION_MESSAGE);
 		int Person_num = -1;
 		for (int i = 0; i < CitizenList.size(); i++) {
+			//Find citizen based on IC that user input
 			if(CitizenList.get(i).getIc().equalsIgnoreCase(ic)) {
 				Person_num = i;
 				break;
 			}
 		}
+		//Exit if user doesn't put IC
 		if(ic == null)
 			return;
 
+		//Exit if system can't find IC
 		if(Person_num == -1){
 			JOptionPane.showMessageDialog(null, "Citizen with " + ic + " not existed","Not Found", JOptionPane.WARNING_MESSAGE);
 			return;
 		}
+
+		//Button remove function
 		if(e.getSource() == btnRemove){
+
+			//Show confirmation box
 			int reply = JOptionPane.showConfirmDialog(null, CitizenList.get(Person_num), "Are you sure to delete this citizen", JOptionPane.YES_NO_OPTION);
+
+			//If user press yes to delete
 			if (reply == JOptionPane.YES_OPTION) {
 				CitizenList.remove(Person_num);
 			}
 		}
+
+		//Button update function
 		else if (e.getSource() == btnUpdate) {
 			Form frame = new Form("UPDATE", CitizenList, CitizenList.get(Person_num));
 			frame.setVisible(true);

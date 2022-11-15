@@ -65,17 +65,20 @@ public class Vaccination extends JFrame implements ActionListener{
 
 	public void actionPerformed(ActionEvent e){
 		if(e.getSource() == btn1stdose){
+			//Open 1st dose pages
 			Vaccine frame = new Vaccine(stCenter1, stCenter2, stCenter3,qCenter1, qCenter2, qCenter3, completedList, "1stdose");
 			frame.setVisible(true);
 			dispose();
 		}
 		else if(e.getSource() == btn2nddose){
+			//Open 2nd dose pages
 			Vaccine frame = new Vaccine(stCenter1, stCenter2, stCenter3,qCenter1, qCenter2, qCenter3, completedList, "2nddose");
 			frame.setVisible(true);
 			dispose();
 		}
 
 		else if(e.getSource() == btnComplete){
+			//Open complete injection pages
 			Complete frame = new Complete(stCenter1, stCenter2, stCenter3,qCenter1, qCenter2, qCenter3, completedList);
 			frame.setVisible(true);
 			dispose();
@@ -83,6 +86,7 @@ public class Vaccination extends JFrame implements ActionListener{
 
 		else if(e.getSource() == btnBack){
 			LinkedList<Citizen> CitizenList = new LinkedList<>();
+			//Empty up all stack and queue to CitizenList
 			while(!stCenter1.isEmpty()){
 				CitizenList.add(stCenter1.pop());
 			}while(!stCenter2.isEmpty()){
@@ -99,6 +103,7 @@ public class Vaccination extends JFrame implements ActionListener{
 				CitizenList.add(completedList.pop());
 			}
 			
+			//Return back to TestCitizen
 			TestCitizen frame = new TestCitizen(CitizenList);
 			frame.setVisible(true);
 			dispose();

@@ -45,6 +45,7 @@ public class Complete extends JFrame implements ActionListener{
 			public void mouseClicked(MouseEvent e) {
 				for (int i = 0; i < completedList.size(); i++) {
 					if(completedList.get(i).getName().equalsIgnoreCase(list.getSelectedValue()))
+						//Show user certificate based on clicked name
 						JOptionPane.showMessageDialog(null, completedList.get(i), "Certificate", JOptionPane.INFORMATION_MESSAGE);
 				}
 			}
@@ -73,6 +74,7 @@ public class Complete extends JFrame implements ActionListener{
 
 	public void actionPerformed(ActionEvent e){
 		if(e.getSource() == btnBack){
+			//Return to previous page
 			Vaccination frame = new Vaccination(stCenter1, stCenter2, stCenter3,qCenter1, qCenter2, qCenter3, completedList);
 			frame.setVisible(true);
 			dispose();

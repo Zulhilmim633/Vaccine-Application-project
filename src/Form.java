@@ -140,16 +140,20 @@ public class Form extends JFrame implements ActionListener{
 
             JTextField field[] = {txtName, txtAge, txtState, txtIc, txtCategory};
             boolean empty = false;
+            //Searching if there is empty value
             for (int i = 0; i < field.length; i++) {
+                //If found empty value
                 if(field[i].getText().equalsIgnoreCase("")){
                     empty = true;
                     break;
                 }
             }
+            //Prompt to user if having a empty field
             if(empty){
                 JOptionPane.showMessageDialog(null, "Please dont leave input field empty", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
+            //Only accept age more than 18
             if(Integer.parseInt(txtAge.getText()) < 18){
                 JOptionPane.showMessageDialog(null, "Age is not match", "Age", JOptionPane.ERROR_MESSAGE);
                 return;
@@ -164,12 +168,14 @@ public class Form extends JFrame implements ActionListener{
                 
                 CitizenList.add(citizen);
 
+                //Return to TestCitizen back with new Citizen value
 				TestCitizen frame = new TestCitizen(CitizenList);
 				frame.setVisible(true);
 				dispose();
 			}
             else if(option.equalsIgnoreCase("UPDATE")){
                 for (int i = 0; i < CitizenList.size(); i++) {
+                    //Find citizen in CitizenList based on input IC
                     if(CitizenList.get(i).getIc() == person.getIc()){
                         String dose1 = txt1stdose.getText().equalsIgnoreCase("") ? null : txt1stdose.getText();
                         String dose2 = txt2nddose.getText().equalsIgnoreCase("") ? null : txt2nddose.getText();
@@ -180,11 +186,14 @@ public class Form extends JFrame implements ActionListener{
                     }
                 }
                 
+                //Return with updated CitizenList
 				TestCitizen frame = new TestCitizen(CitizenList);
 				frame.setVisible(true);
 				dispose();
 			}
 		}
+
+        //Return back to TestCitizen without changes
         else if(e.getSource() == btnBack){
             TestCitizen frame = new TestCitizen(CitizenList);
             frame.setVisible(true);
